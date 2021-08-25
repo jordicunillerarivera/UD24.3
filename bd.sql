@@ -1,18 +1,18 @@
+DROP table IF EXISTS suministra;
 DROP table IF EXISTS piezas;
 DROP table IF EXISTS proveedores;
-DROP table IF EXISTS suministra;
 
-CREATE TABLE `UD26`.`piezas` (
+CREATE TABLE `piezas` (
   `codigo` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NULL,
   PRIMARY KEY (`codigo`));
 
-CREATE TABLE `UD26`.`proveedores` (
-  `id` INT NOT NULL,
+CREATE TABLE `proveedores` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `UD26`.`suministra` (
+CREATE TABLE `suministra` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `codigoPieza` INT NOT NULL,
   `idProveedor` INT NOT NULL,
@@ -21,11 +21,11 @@ CREATE TABLE `UD26`.`suministra` (
   INDEX `piezas_idx` (`codigoPieza` ASC) VISIBLE,
   INDEX `proveedores_idx` (`idProveedor` ASC) VISIBLE,
     FOREIGN KEY (`codigoPieza`)
-    REFERENCES `UD26`.`piezas` (`codigo`)
+    REFERENCES `piezas` (`codigo`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
     FOREIGN KEY (`idProveedor`)
-    REFERENCES `UD26`.`proveedores` (`id`)
+    REFERENCES `proveedores` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
